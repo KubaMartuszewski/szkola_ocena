@@ -11,38 +11,31 @@
         <h1>Dziennik</h1>
     </header>
     <main>
-        <h2>Matematyka</h2>
-        <table id="plan-lekcji">
-            <table border="1">
-        <thead>
-            <tr>
-                <th>Numer</th>
-                <th>Imie</th>
-                <th>Nazwisko</th>
-                <th>Ocena</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Jakub</td>
-                <td>Łoś</td>
-                <td>4</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Andrzej</td>
-                <td>Kiepski</td>
-                <td>5</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Karol</td>
-                <td>Kowalski</td>
-                <td>3</td>
-            </tr>
-        </tbody>
-    </table>
+        <?php
+            echo '<main>';
+            echo '<div style="text-align: center;">';
+            echo '<h1>Matematyka</h1>';
+            $login = mysqli_connect('localhost', 'root', '', 'szkola');
+            $result = mysqli_query($login, 'SELECT ID, Imie, Nazwisko, Ocena FROM uczniowie');
+            echo "<table>";
+            echo "<tr>";
+            echo "<th>id</th>"; 
+            echo "<th>imie</th>";
+            echo "<th>nazwisko</th>";
+            echo "<th>ocena</th>";
+            echo "</tr>";
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<tr>";
+                echo "<td>" . $row['ID'] . "</td>";
+                echo "<td>" . $row['Imie'] . "</td>";
+                echo "<td>" . $row['Nazwisko'] . "</td>";
+                echo "<td>" . $row['Ocena'] . "</td>";
+                echo "</tr>";
+            }
+            echo "</table>";
+            echo '</div>';
+            echo '</main>';
+            ?>
     </main>
     <aside>
         <ul>

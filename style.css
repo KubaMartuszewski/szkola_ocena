@@ -26,6 +26,7 @@ main{
     float: left;
     display: grid;
     align-content: start;
+    font-size: 35px;
 }
 
 aside {
